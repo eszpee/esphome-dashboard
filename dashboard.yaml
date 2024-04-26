@@ -2,7 +2,7 @@ title: Home-test
 views:
   - title: Státuszokok
     path: statuszok
-    icon: mdi:battery-check-outline
+    icon: mdi:tortoise
     cards:
       - type: entities
         entities:
