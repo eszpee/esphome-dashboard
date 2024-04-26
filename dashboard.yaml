@@ -1,0 +1,10 @@
+title: Home-test
+views:
+  - title: Státuszokok
+    path: statuszok
+    icon: mdi:battery-check-outline
+    cards:
+      - type: entities
+        entities:
+          - sensor.eloszoba_shortcut
+        title: Sensor
