@@ -1,10 +1,17 @@
-title: Home-test
+# additional js module for the bkk stop card dashboard item
+resources:
+  - {type: module, url: '/www/community/bkk-stop-card/bkk-stop-card.js'}
+
+# dashboard config
+title: BKK
 views:
-  - title: Státuszokok
-    path: statuszok
+  - title: BKK indulási idők
+    path: bkk
     icon: mdi:tortoise
     cards:
-      - type: entities
-        entities:
-          - sensor.eloszoba_shortcut
-        title: Sensor-github
+      - type: custom:bkk-stop-card
+        title: BKK következő járat
+        entity: sensor.bkk_gardonyi
+        hide_in_mins: false # it makes sense to set this to false if hide_predicted_at_time is true, as in_mins is calculated from "scheduled" times
+        hide_at_time: true
+        hide_predicted_at_time: false
