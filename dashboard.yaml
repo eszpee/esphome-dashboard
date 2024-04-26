@@ -7,4 +7,4 @@ views:
       - type: entities
         entities:
           - sensor.eloszoba_shortcut
-        title: Sensor
+        title: Sensor-github
