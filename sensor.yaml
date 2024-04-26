@@ -1,0 +1,8 @@
+- platform: gtfs_rt
+  trip_update_url: 'https://go.bkk.hu/api/query/v1/ws/gtfs-rt/full/TripUpdates.pb?key=52a26ae3-3257-4e15-87ad-e46337932b7c'
+  vehicle_position_url: 'https://go.bkk.hu/api/query/v1/ws/gtfs-rt/full/VehiclePositions.pb?key=52a26ae3-3257-4e15-87ad-e46337932b7c'
+  apikey: "52a26ae3-3257-4e15-87ad-e46337932b7c"
+  departures:
+    - name: "47 villamos"
+      route: "BKK_3410"
+      stopid: "BKK_CSF02149" 
