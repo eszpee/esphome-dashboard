@@ -1,0 +1,89 @@
+########################################
+# BASIC STUFF
+substitutions:
+  name: esphome-web-160662
+  friendly_name: ESPHome Web 160662
+esphome:
+  name: ${name}
+  friendly_name: ${friendly_name}
+  name_add_mac_suffix: false
+  project:
+    name: esphome.web
+    version: '1.0'
+# Enable logging
+logger:
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "+bCGzU9lsFrxEerCVVyQksM/pMNxNZ9PWsA7QPZozsk="
+# Allow Over-The-Air updates
+ota:
+# Allow provisioning Wi-Fi via serial
+improv_serial:
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device via WiFi AP.
+captive_portal:
+# To have a "next url" for improv serial
+web_server:
+
+
+########################################
+# MICROCONTROLLER SETUP
+esp8266:
+  board: d1_mini
+i2c:
+  sda: D1
+  scl: D2
+#Display 
+display:
+  - platform: ssd1306_i2c
+    model: "SH1106 128x64"
+    reset_pin: D0
+    address: 0x3C
+    id: lcd_display 
+    lambda: |-      
+      it.printf(64, 0, id(roboto_15), TextAlign::TOP_CENTER, "%s", id(mandula_station_name).state.c_str());
+      it.strftime(64, 60, id(roboto_20), TextAlign::BASELINE_CENTER, "%H:%M:%S", id(homeassistant_time).now());
+
+
+########################################
+# FONTS AND IMAGES
+font:
+  - file: "gfonts://Roboto"
+    id: roboto_20
+    size: 20
+  - file: "gfonts://Roboto"
+    id: roboto_10
+    size: 10
+  - file: "gfonts://Open%20Sans"
+    id: roboto_15
+    size: 15
+    glyphs: '!"%()+=,-_.:°0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz/µ³áéíóöőúüűÁÉÍÓÖŐÚÜŰ'
+
+
+########################################
+# SENSORS AND WHATNOT
+time:
+  - platform: homeassistant
+    id: homeassistant_time
+
+sensor:  
+  - platform: wifi_signal
+    name: "Weatherman - WiFi Signal Strength"
+    id: wifisignal
+    unit_of_measurement: "dBm"
+    entity_category: "diagnostic"
+    update_interval: 60s
+
+  - platform: homeassistant
+    entity_id: sensor.bkk_mandula
+    id: bkk
+
+text_sensor:
+  - platform: homeassistant
+    entity_id: sensor.bkk_mandula
+    attribute: stationName
+    id: mandula_station_name
