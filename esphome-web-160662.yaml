@@ -46,6 +46,7 @@ display:
     id: lcd_display 
     lambda: |-      
       it.printf(64, 0, id(roboto_15), TextAlign::TOP_CENTER, "%s", id(mandula_station_name).state.c_str());
+      it.printf(64, 30, id(roboto_15), TextAlign::CENTER, "Most %sºC fok van.", id(weather_temperature_0).state.c_str());
       it.strftime(64, 60, id(roboto_20), TextAlign::BASELINE_CENTER, "%H:%M:%S", id(homeassistant_time).now());
 
 
@@ -61,7 +62,7 @@ font:
   - file: "gfonts://Open%20Sans"
     id: roboto_15
     size: 15
-    glyphs: '!"%()+=,-_.:°0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz/µ³áéíóöőúüűÁÉÍÓÖŐÚÜŰ'
+    glyphs: '!"%()+=,-_.:°0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz/µ³áéíóöőúüűÁÉÍÓÖŐÚÜŰº'
 
 
 ########################################
@@ -87,3 +88,9 @@ text_sensor:
     entity_id: sensor.bkk_mandula
     attribute: stationName
     id: mandula_station_name
+
+  - platform: homeassistant
+    entity_id: sensor.weatherman_data
+    attribute: weather_temperature_0
+    id: weather_temperature_0
+
