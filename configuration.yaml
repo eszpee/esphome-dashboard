@@ -30,6 +30,21 @@ template:
       - name: "Mandula Bus 0 In"
         state: >                    
           {{ state_attr('sensor.bkk_mandula', 'vehicles')[0].in }}
+      - name: "Mandula Bus 1 In"
+        state: >                    
+          {{ state_attr('sensor.bkk_mandula', 'vehicles')[1].in }}
+      - name: "Mandula Bus 2 In"
+        state: >                    
+          {{ state_attr('sensor.bkk_mandula', 'vehicles')[2].in }}
+      - name: "Mandula Bus 3 In"
+        state: >                    
+          {{ state_attr('sensor.bkk_mandula', 'vehicles')[3].in }}
+      - name: "Mandula Bus 4 In"
+        state: >                    
+          {{ state_attr('sensor.bkk_mandula', 'vehicles')[4].in }}
+      - name: "Mandula Next Buses"
+        state: >                    
+          {{ state_attr('sensor.bkk_mandula', 'vehicles')[0].in }}{% if has_value('sensor.mandula_bus_1_in') %}, {{ state_attr('sensor.bkk_mandula', 'vehicles')[1].in }}{% if has_value('sensor.mandula_bus_2_in') %}, {{ state_attr('sensor.bkk_mandula', 'vehicles')[2].in }}{% if has_value('sensor.mandula_bus_3_in') %}, {{ state_attr('sensor.bkk_mandula', 'vehicles')[3].in }}{% if has_value('sensor.mandula_bus_4_in') %}, {{ state_attr('sensor.bkk_mandula', 'vehicles')[4].in }}{% endif %}{% endif %}{% endif %}{% endif %}
 
   # Bundle up all the data to send over to Weatherman (ESPHome device).
 
