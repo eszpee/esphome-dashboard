@@ -1,0 +1,9 @@
+- platform: bkk_stop
+  name: 'bkk_mandula'
+  stopId: 'BKK_F00224'
+  minsAfter: 25
+  apiKey: "REPLACE-WITH-YOUR-OWN"
+  routes:
+    - 91
+    - 191
+    - 291
