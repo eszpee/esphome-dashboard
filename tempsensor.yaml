@@ -18,6 +18,8 @@ api:
     key: "+bCGzU9lsFrxEerCVVyQksM/pMNxNZ9PWsA7QPZozsk="
 # Allow Over-The-Air updates
 ota:
+  platform: esphome
+#  password: "your_ota_password_here"
 # Allow provisioning Wi-Fi via serial
 improv_serial:
 wifi:
@@ -57,7 +59,7 @@ font:
     glyphs: '!"%()+=,-_.:°0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz/µ³áéíóöőúüűÁÉÍÓÖŐÚÜŰº'
   - file: "gfonts://Chakra%20Petch"
     id: font_big
-    size: 30
+    size: 36
     glyphs: '!"%()+=,-_.:°0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz/µ³áéíóöőúüűÁÉÍÓÖŐÚÜŰº'
 
 ########################################
@@ -84,5 +86,6 @@ sensor:
       name: "Balcony Humidity"
     update_interval: 60s
     model: DHT22
+
 
 
